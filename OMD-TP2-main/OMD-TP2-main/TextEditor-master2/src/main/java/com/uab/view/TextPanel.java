@@ -215,10 +215,7 @@ public class TextPanel extends JPanel implements Observer, MouseListener {
 				System.out.println("Left");
 				glyph.getCursor().decrementGlyphIndex();
 				repaint();
-			 }// else if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_A) {
-			// 	ArrowModel arrow = new ArrowModel();
-			// 	controller.insert(arrow, glyph.getCursor().getGlyphIndex());
-			// }
+			 }
 
 			else if (!e.isControlDown() && !e.isAltDown()  && ! (e.getKeyCode()== KeyEvent.VK_SHIFT)) {
 				System.out.println(e.getKeyChar() + "   called ");

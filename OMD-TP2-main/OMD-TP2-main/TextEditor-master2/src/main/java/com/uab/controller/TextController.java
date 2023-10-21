@@ -121,12 +121,4 @@ public class TextController implements ControllerInterface {
 		
 	}
 
-
-
-
-
-
-
-
-
 }
