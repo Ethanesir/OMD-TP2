@@ -1,14 +1,13 @@
-import com.uab.controller.TextController;
-import com.uab.model.Composition;
-import com.uab.model.Glyph;
-import com.uab.model.strategies.Compositor;
-import com.uab.model.strategies.SimpleCompositor;
+import esir2.omd.tp2.app.TextApp;
+import esir2.omd.tp2.patterns.composite.Composition;
+import esir2.omd.tp2.patterns.strategies.Compositor;
+import esir2.omd.tp2.patterns.strategies.SimpleCompositor;
 
 public class App {
 	public static void main(String[] args) {
 		Compositor strategy = new SimpleCompositor();
 		Composition glyph = new Composition(strategy);
-		TextController textController = new TextController(glyph);
+		TextApp textController = new TextApp(glyph);
 
 	}
 }
