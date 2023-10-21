@@ -35,8 +35,6 @@ public class Window extends JPanel implements Observer, MouseListener {
 	private JMenu edit;
 
 	// Edit menu items
-	private JMenuItem undo;
-	private JMenuItem redo;
 	private JMenuItem cut;
 	private JMenuItem copy;
 	private JMenuItem paste;
@@ -80,27 +78,7 @@ public class Window extends JPanel implements Observer, MouseListener {
 		menubar = new JMenuBar();
 
 		edit = new JMenu("Edit");
-		undo = new JMenuItem("Undo Typing");
-		edit.add(undo);
-		undo.addActionListener(new ActionListener() {
 
-			public void actionPerformed(ActionEvent e) {
-				controller.undo();
-
-			}
-
-		});
-
-		redo = new JMenuItem("Redo");
-		edit.add(redo);
-		redo.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				controller.redo();
-
-			}
-
-		});
 
 		edit.addSeparator();
 		cut = new JMenuItem("Cut");
@@ -175,11 +153,7 @@ public class Window extends JPanel implements Observer, MouseListener {
 
 		public void keyPressed(KeyEvent e) {
 
-			if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_Z) {
-				controller.undo();
-			} else if (e.isControlDown() && e.getKeyCode() == KeyEvent.VK_Y) {
-				controller.redo();
-			} else if (e.getKeyCode() == KeyEvent.VK_DELETE || e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+			 if (e.getKeyCode() == KeyEvent.VK_DELETE || e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
 				controller.delete(glyph.getCursor().getSelectB(),glyph.getCursor().getSelectE());
 			}
 

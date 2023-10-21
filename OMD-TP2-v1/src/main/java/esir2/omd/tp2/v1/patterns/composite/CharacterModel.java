@@ -3,7 +3,6 @@ package esir2.omd.tp2.v1.patterns.composite;
 import esir2.omd.tp2.v1.patterns.Glyph;
 
 import java.awt.Color;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 
 //import com.uab.patterns.visitor.Visitor;
@@ -33,7 +32,6 @@ public class CharacterModel extends Glyph {
 		g.drawString(Character.toString(this.character), position.getX(),
 				position.getY());
 
-		FontMetrics fm = g.getFontMetrics();
 		// bounds = new Rect(position.getX(), position.getY(),
 		// fm.charWidth(this.character), fm.getHeight());
 		bounds = new Rect(position.getX(), position.getY() - getHeigth(), 10,

@@ -21,13 +21,5 @@ public class InsertCommand implements Command {
 
 	}
 
-	public void undo() {
-		this.document.remove(insertIndex);
-
-	}
-
-	public boolean isReversible() {
-		return true;
-	}
 
 }

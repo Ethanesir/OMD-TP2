@@ -12,10 +12,6 @@ public interface AppInterface {
 
 	public void scrollDown();
 
-	public void undo();
-
-	public void redo();
-
 	public void cut(int indexBegin, int indexEnd);
 
 	public void copy(int indexBegin, int indexEnd);

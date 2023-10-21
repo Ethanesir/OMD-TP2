@@ -29,12 +29,6 @@ public class CopyCommand implements Command {
 	public List<Glyph> getPresseP(){
 		return this.copie;
 	}
-	public void undo() {
 
-	}
-
-	public boolean isReversible() {
-		return false;
-	}
 
 }
