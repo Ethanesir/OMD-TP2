@@ -12,9 +12,9 @@ public class DeleteCommand implements Command {
 	private int indexE;
 	private Boolean use;
 
+	// Constructeur de la classe
 	public DeleteCommand(Glyph document, int indexBegin, int indexEnd) {
 
-		
 		this.document = document;
 		this.indexB = indexBegin;
 		this.indexE = indexEnd;
@@ -22,6 +22,9 @@ public class DeleteCommand implements Command {
 		this.use=false;
 	}
 
+	/*
+	* Méthode exécutant la commande
+	*/
 	public void execute() {
 		if (indexB==indexE){
 			System.out.println("OOOOOUUUUU");
@@ -49,6 +52,10 @@ public class DeleteCommand implements Command {
 		use=true;
 	}
 
+
+	/*
+	* Méthode permettant le retour en arrière
+	*/
 	public void undo() {
 		if (indexB==indexE){
 			this.deleteIndex = this.indexB - 1;
@@ -68,6 +75,9 @@ public class DeleteCommand implements Command {
 
 	}
 
+	/*
+	* Méthode précisant si la commande est réversible ou pas
+	*/
 	public boolean isReversible() {
 		return true;
 	}

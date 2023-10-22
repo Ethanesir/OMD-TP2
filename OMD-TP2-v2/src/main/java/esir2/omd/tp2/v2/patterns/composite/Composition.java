@@ -4,12 +4,10 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 import esir2.omd.tp2.v2.patterns.Glyph;
 import esir2.omd.tp2.v2.patterns.strategies.Compositor;
-//import com.uab.patterns.visitor.Visitor;
 
 @XmlRootElement
 public class Composition extends Glyph {
@@ -26,11 +24,13 @@ public class Composition extends Glyph {
 
 	}
 
+	// Constructeur de la classe
 	public Composition(Compositor compositor) {
 		this.compositor = compositor;
 		this.compositor.setComposition(this);
 		cursor = new Caret(this, 0, 0, 0);
 	}
+
 	public Caret getCursor() {
 		return cursor;
 	}
@@ -57,12 +57,7 @@ public class Composition extends Glyph {
 
 	}
 
-	// public void performVisit(Visitor visitor) {
-	// 	for (Glyph g : components) {
-	// 		g.accept(visitor);
-	// 	}
-	// }
-
+	// Renvoie le caractère à l'index i
 	@Override
 	public Glyph getChild(int i) {
 		return this.components.get(i);
@@ -76,6 +71,7 @@ public class Composition extends Glyph {
 		formattedDocument = column;
 	}
 
+	// Ajoute un caractère à l'index i
 	@Override
 	public void add(Glyph glyph, int index) {
 		System.out.println("Composition" + index);
@@ -86,6 +82,7 @@ public class Composition extends Glyph {
 
 	}
 
+	// Supprime le caractère de l'index i
 	@Override
 	public void remove(int index) {
 
@@ -95,11 +92,13 @@ public class Composition extends Glyph {
 		notifyObservers();
 	}
 
+	// Met à les éléments en fonction de la dimension
 	@Override
 	public void format(int width, int height) {
 		this.compositor.compose(width, height);
 	}
 	
+	// Méthode affichant les éléments de l'éditeur de texte
 	@Override
 	public void draw(Graphics g, Point position, int width, int height) {
 		int startX = 9;

@@ -10,6 +10,8 @@ public class CopyCommand implements Command {
 	private int insertE;
 	private List<Glyph>copie;
 
+
+	// Constructeur de la classe
 	public CopyCommand(Glyph document, int indexBegin, int indexEnd) {
 		System.out.println(indexBegin + " :: "+ indexEnd);
 		this.document = document;
@@ -18,6 +20,9 @@ public class CopyCommand implements Command {
 		copie=new ArrayList<Glyph>();
 	}
 
+	/*
+	* Méthode exécutant la commande
+	*/
 	public void execute() {
 		
 		System.out.println("Command Copy");
@@ -26,13 +31,23 @@ public class CopyCommand implements Command {
 		}
 	}
 
+	/*
+	* Méthode renvoyant le chaîne de caractère copié
+	*/
 	public List<Glyph> getPresseP(){
 		return this.copie;
 	}
+
+	/*
+	* Méthode permettant le retour en arrière
+	*/
 	public void undo() {
 
 	}
 
+	/*
+	* Méthode précisant si la commande est réversible ou pas
+	*/
 	public boolean isReversible() {
 		return false;
 	}

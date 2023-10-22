@@ -11,6 +11,7 @@ public class CutCommand implements Command {
 	private int insertE;
 	private List<Glyph>copie;
 
+	// Constructeur de la classe
 	public CutCommand(Glyph document, int indexBegin, int indexEnd) {
 		System.out.println(indexBegin + " :: "+ indexEnd);
 		this.document = document;
@@ -20,6 +21,10 @@ public class CutCommand implements Command {
 		this.use=false;
 	}
 
+
+	/*
+	* Méthode exécutant la commande
+	*/
 	public void execute() {
 		System.out.println("Command Cut");
 		for(int i=this.insertB;i<this.insertE;i++){
@@ -31,9 +36,16 @@ public class CutCommand implements Command {
 		use=true;
 	}
 
+	/*
+	* Méthode renvoyant le chaîne de caractère copié
+	*/
 	public List<Glyph> getPresseP(){
 		return this.copie;
 	}
+
+	/*
+	* Méthode permettant le retour en arrière
+	*/
 	public void undo() {
 		System.out.println("AAAAAAAA");
 		if (insertB==insertE){
@@ -51,6 +63,9 @@ public class CutCommand implements Command {
 		}
 	}
 
+	/*
+	* Méthode précisant si la commande est réversible ou pas
+	*/
 	public boolean isReversible() {
 		return true;
 	}

@@ -3,10 +3,7 @@ package esir2.omd.tp2.v2.patterns.composite;
 import esir2.omd.tp2.v2.patterns.Glyph;
 
 import java.awt.Color;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
-
-//import com.uab.patterns.visitor.Visitor;
 
 public class CharacterModel extends Glyph {
 
@@ -21,21 +18,18 @@ public class CharacterModel extends Glyph {
 		super();
 	}
 
+	// Constructeur de la classe
 	public CharacterModel(char c) {
 		super();
 		this.character = c;
 		toUnderline = false;
 
 	}
-
+	// Méthode affichant le caractère
 	@Override
 	public void draw(Graphics g, Point position, int width, int height) {
 		g.drawString(Character.toString(this.character), position.getX(),
 				position.getY());
-
-		FontMetrics fm = g.getFontMetrics();
-		// bounds = new Rect(position.getX(), position.getY(),
-		// fm.charWidth(this.character), fm.getHeight());
 		bounds = new Rect(position.getX(), position.getY() - getHeigth(), 10,
 				20);
 		position.incrementXBy(getWidth());
@@ -47,15 +41,6 @@ public class CharacterModel extends Glyph {
 					bounds.getBottom() + bounds.getHeight());
 			g.setColor(Color.BLACK);
 		}
-		/*if (this.hasCursor) {
-			if (before)
-				g.fillRect(bounds.getLeft() - 3, bounds.getBottom(), 2,
-						bounds.getHeight());
-			else
-				g.fillRect(bounds.getLeft() + bounds.getWidth() - 3,
-						bounds.getBottom(), 2, bounds.getHeight());
-		}
-		*/
 
 	}
 
@@ -93,19 +78,5 @@ public class CharacterModel extends Glyph {
 		this.character = c;
 
 	}
-
-	// @Override
-	// public void accept(Visitor visitor) {
-	// 	visitor.visit(this);
-	// }
-
-	public void underlineWithRed() {
-		toUnderline = true;
-	}
-
-	public void removeUnderline() {
-		toUnderline = false;
-	}
-
 
 }

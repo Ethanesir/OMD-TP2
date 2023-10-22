@@ -16,7 +16,7 @@ public class SimpleCompositor implements Compositor {
 		this.composition = composition;
 
 	}
-
+	// Met à jour les éléments en fonction des dimensions
 	public void compose(int lineWidth, int height) {
 
 		List<Glyph> components = composition.getComponents();
