@@ -5,13 +5,12 @@ import esir2.omd.tp2.v1.patterns.Glyph;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
-//import com.uab.patterns.visitor.Visitor;
-
 public class Column extends Glyph {
 	private ArrayList<Glyph> rows = new ArrayList<Glyph>();
 	private Rect bounds;
 	private int lineSpacing;
 
+	// Constructeur de la classe 
 	public Column() {
 		bounds = Rect.ZERO;
 		lineSpacing = 10;
@@ -24,7 +23,7 @@ public class Column extends Glyph {
 	@Override
 	public void add(Glyph glyph) {
 		rows.add(glyph);
-		// notifyObservers();
+		notifyObservers();
 
 	}
 
@@ -37,7 +36,7 @@ public class Column extends Glyph {
 	@Override
 	public void remove(Glyph glyph) {
 		rows.remove(glyph);
-		// notifyObservers();
+		notifyObservers();
 	}
 
 	@Override
@@ -47,10 +46,10 @@ public class Column extends Glyph {
 
 	@Override
 	public Glyph parent() {
-		// TODO Auto-generated method stub
 		return super.parent();
 	}
-
+	
+	// Méthode dessinant les lignes
 	@Override
 	public void draw(Graphics g, Point position, int width, int height) {
 		bounds.setLeft(position.getX());
@@ -63,9 +62,6 @@ public class Column extends Glyph {
 
 		bounds.setBottom(position.getY() - getHeigth() - 2 * lineSpacing);
 		bounds.setExtent(new Point(getWidth(), getHeigth()));
-
-		// g.drawRect(bounds.getLeft(), bounds.getBottom(), bounds.getWidth(),
-		// bounds.getHeight());
 	}
 
 	@Override
@@ -101,13 +97,5 @@ public class Column extends Glyph {
 	public void setBounds(Rect rectangle) {
 		this.bounds = rectangle;
 	}
-
-	// @Override
-	// public void accept(Visitor visitor) {
-	// 	for (int i = 0; i < rows.size(); i++)
-	// 		rows.get(i).accept(visitor);
-
-	// 	visitor.visit(this);
-	// }
 
 }

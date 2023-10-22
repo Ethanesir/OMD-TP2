@@ -1,11 +1,10 @@
 package esir2.omd.tp2.v1.patterns.composite;
 
 import esir2.omd.tp2.v1.patterns.Glyph;
-
-import java.util.List;
 import java.awt.Graphics;
 
 public class Caret {
+
 	private Composition document;
 	private int rowIndex;
 	private int columnIndex;
@@ -13,12 +12,14 @@ public class Caret {
 	private int selectE;
 	private int glyphIndex;
 
+	// Constructeur par défaut de la classe
 	public Caret() {
 		this.rowIndex = 0;
 		this.columnIndex = 0;
 		this.glyphIndex = 0;
 	}
 
+	// Constructeur de la classe
 	public Caret(Composition document, int rowIndex, int columnIndex,
 			int glyphIndex) {
 		this.document = document;
@@ -28,10 +29,12 @@ public class Caret {
 
 	}
 
+	// Modifie la position du curseur
 	public void setGlyphIndex(int glyphIndex) {
 		this.glyphIndex = glyphIndex;
 	}
 
+	// Renvoie le document 
 	public Composition getDocument() {
 		return document;
 	}
@@ -56,35 +59,7 @@ public class Caret {
 		this.columnIndex = columnIndex;
 	}
 
-	// public void mapPointToRowAndColumn(Point p) {
-	// 	this.rowIndex = -1;
-	// 	this.columnIndex = -1;
-	// 	Column doc = this.document.getFormattedDocument();
-
-	// 	if (doc.intersects(p)) {
-	// 		for (int i = 0; i < doc.getRowsCount(); i++) {
-
-	// 			Row row = (Row) doc.getChild(i);
-
-	// 			if (row.intersects(p)) {
-	// 				for (int j = 0; j < row.getGlyphsCount(); j++) {
-	// 					Glyph g = row.getChild(j);
-	// 					if (g.intersects(p)) {
-	// 						this.rowIndex = i;
-	// 						this.columnIndex = j;
-	// 						System.out.println("Row is " + this.rowIndex
-	// 								+ "  and colIndex iis " + this.columnIndex);
-	// 						break;
-	// 					}
-
-	// 				}
-
-	// 			}
-
-	// 		}
-
-	// 	}
-	// }
+	// Place le curseur en fonction du point
 	public void mapPointToRowAndColumn(Point p) {
 		int totChar=0;
 		this.rowIndex = -1;
@@ -113,15 +88,7 @@ public class Caret {
 			}
 
 		}
-
-	public void moveLeft() {
-
-	}
-
-	public void moveRight() {
-
-	}
-
+	
 	public void mapToGlyphIndex() {
 		this.glyphIndex = 0;
 		Column doc = this.document.getFormattedDocument();
@@ -140,6 +107,7 @@ public class Caret {
 		}
 	}
 
+	// Incrémente la position du curseur
 	public void incrementGlyphIndex() {
 		
 		if (this.glyphIndex < this.document.getComponents().size()) {
@@ -151,10 +119,12 @@ public class Caret {
 
 	}
 
+	// Renvoie l'index du curseur
 	public int getGlyphIndex() {
 		return glyphIndex;
 	}
 
+	// Décrémente la position du curseur
 	public void decrementGlyphIndex() {
 		if (this.glyphIndex > 0) {
 			this.glyphIndex--;
@@ -165,37 +135,18 @@ public class Caret {
 
 	}
 
+	// Met à jour le curseur
 	public void updateCursor() {
-		deActivateCursor();
-		if (this.glyphIndex == 0) {
 
-			if (this.document.getComponents().size() > 0) {
-				Glyph lastGlyph = this.document.getComponents().get(
-						this.glyphIndex);
-
-				lastGlyph.activateHasCursor(true);
-			} else {
-				// draw the initial cursor
-			}
-
-		}
 		if (this.glyphIndex > 0) {
 			Glyph lastGlyph = this.document.getComponents().get(
 					this.glyphIndex - 1);
 			if (lastGlyph != null) {
-				lastGlyph.activateHasCursor(false);
 
 			}
 		}
 	}
 
-	public void deActivateCursor() {
-		List<Glyph> components = this.document.getComponents();
-		for (Glyph g : components) {
-			g.deActivateHasCursor();
-		}
-
-	}
 	public int getSelectB(){
 		return this.selectB;
 	}
@@ -215,6 +166,7 @@ public class Caret {
 			this.selectE=temp;
 		}
 	}
+	// Méthode qui dessine la sélection et le curseur
 	public void draw(Graphics g) {
 		
 		if (this.selectB!=this.selectE){

@@ -6,20 +6,32 @@ public class InsertCommand implements Command {
 
 	private Glyph document;
 	private Glyph glyph;
-	private int insertIndex;
+	private int insertB;
+	private int insertE;
 
-	public InsertCommand(Glyph document, Glyph g, int index) {
+
+	// Constructeur de la classe
+	public InsertCommand(Glyph document, Glyph g, int indexBegin,int indexEnd) {
 
 		this.document = document;
 		this.glyph = g;
-		this.insertIndex = index;
+		this.insertB = indexBegin;
+		this.insertE = indexEnd;
 	}
 
+	/*
+	* Méthode exécutant la commande
+	*/
 	public void execute() {
-		System.out.println("Command " + insertIndex);
-		this.document.add(glyph, insertIndex);
+		System.out.println("Command " + insertB);
+		for(int i=insertB;i<insertE;i++){
+			this.document.remove(insertB);
+		}
+			this.document.add(glyph, insertB);		
 
 	}
+
+
 
 
 }

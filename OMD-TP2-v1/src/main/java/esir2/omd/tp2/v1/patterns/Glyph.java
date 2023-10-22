@@ -9,8 +9,7 @@ import esir2.omd.tp2.v1.patterns.composite.Caret;
 import esir2.omd.tp2.v1.patterns.composite.Point;
 import esir2.omd.tp2.v1.patterns.composite.Rect;
 import esir2.omd.tp2.v1.patterns.observer.Observer;
-//import com.uab.patterns.visitor.Visitor;
-import esir2.omd.tp2.v1.view.Window;
+
 
 public abstract class Glyph implements Serializable {
 
@@ -18,22 +17,27 @@ public abstract class Glyph implements Serializable {
 
 	private ArrayList<Observer> observers = new ArrayList<Observer>();
 
+	// Ajoute un caractère à l'index "index"
 	public void add(Glyph glyph, int index) {
 		throw new UnsupportedOperationException();
 	}
 
+	// Ajoute un caractère à la fin
 	public void add(Glyph glyph) {
 		throw new UnsupportedOperationException();
 	}
 
+	// Supprime un caractère en particulier
 	public void remove(Glyph glyph) {
 		throw new UnsupportedOperationException();
 	}
 
+	// Supprime un caractère à l'index "index"
 	public void remove(int index) {
 		throw new UnsupportedOperationException();
 	}
 
+	// Renvoie le caractère à l'index i
 	public Glyph getChild(int i) {
 		throw new UnsupportedOperationException();
 	}
@@ -58,15 +62,16 @@ public abstract class Glyph implements Serializable {
 		}
 	}
 
+	// Modifie les dimensions du format
 	public void format(int width, int height) {
 
 	}
 
-	public void notifyObservers() {
-		for (Observer observer : observers) {
-			observer.update();
-		}
-	}
+	 public void notifyObservers() {
+	 	for (Observer observer : observers) {
+	 		observer.update();
+	 	}
+	 }
 
 	public Rect getBounds() {
 		throw new UnsupportedOperationException();
@@ -88,18 +93,11 @@ public abstract class Glyph implements Serializable {
 		throw new UnsupportedOperationException();
 	}
 
-	public void scrollUp(Window view) {
-
-	}
-
-	public void scrollDown(Window view) {
-
-	}
-
 	public Caret getCursor() {
 		throw new UnsupportedOperationException();
 	}
 
+	// Renvoie vraie si p est dans bound
 	public boolean intersects(Point p) {
 		Rect bound = getBounds();
 		if ((bound.getLeft() <= p.getX() && p.getX() <= bound.getWidth()
@@ -111,10 +109,7 @@ public abstract class Glyph implements Serializable {
 			return false;
 	}
 
-	// public void accept(Visitor visitor) {
-
-	// }
-
+	// Renvoie la liste des caractères
 	public List<Glyph> getComponents() {
 
 		return null;
@@ -124,12 +119,5 @@ public abstract class Glyph implements Serializable {
 
 	}
 
-	public void activateHasCursor(boolean before) {
-
-	}
-
-	public void deActivateHasCursor() {
-
-	}
 
 }

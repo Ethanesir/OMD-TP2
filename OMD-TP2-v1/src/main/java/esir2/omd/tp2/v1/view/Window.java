@@ -48,7 +48,7 @@ public class Window extends JPanel implements Observer, MouseListener {
 		startPosition = new Point(20, 50);
 
 	}
-
+	
 	public void setGlyph(Composition document) {
 		this.glyph = document;
 	}
@@ -74,11 +74,11 @@ public class Window extends JPanel implements Observer, MouseListener {
 		frame.setVisible(true);
 	}
 
+	// Créer les boutons dans la barre
 	public void creatControls() {
 		menubar = new JMenuBar();
 
 		edit = new JMenu("Edit");
-
 
 		edit.addSeparator();
 		cut = new JMenuItem("Cut");
@@ -129,6 +129,7 @@ public class Window extends JPanel implements Observer, MouseListener {
 
 	}
 
+	// Affiche l'éditeur et les éléments
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		int width = frame.getWidth();
@@ -139,12 +140,14 @@ public class Window extends JPanel implements Observer, MouseListener {
 
 	}
 
+	// Met à jour l'affichage
 	public void update() {
 
 		repaint();
 
 	}
 
+	// Classe associant des touches à des actions
 	private class TypeListener implements KeyListener {
 
 		public void keyTyped(KeyEvent e) {
@@ -153,18 +156,10 @@ public class Window extends JPanel implements Observer, MouseListener {
 
 		public void keyPressed(KeyEvent e) {
 
-			 if (e.getKeyCode() == KeyEvent.VK_DELETE || e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
+			if (e.getKeyCode() == KeyEvent.VK_DELETE || e.getKeyCode() == KeyEvent.VK_BACK_SPACE) {
 				controller.delete(glyph.getCursor().getSelectB(),glyph.getCursor().getSelectE());
 			}
-
-			else if (e.getKeyCode() == KeyEvent.VK_UP) {//addText
-				System.out.println("UPPP");
-				controller.scrollUp();
-			} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-
-				System.out.println("Down");
-				controller.scrollDown();
-			 } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			 else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 
 				System.out.println("Right");
 				glyph.getCursor().incrementGlyphIndex();
@@ -180,7 +175,7 @@ public class Window extends JPanel implements Observer, MouseListener {
 				System.out.println(e.getKeyChar() + "   called ");
 				CharacterModel c = new CharacterModel(e.getKeyChar());
 				System.out.println(glyph.getCursor().getGlyphIndex());
-				controller.insert(c, glyph.getCursor().getGlyphIndex());
+				controller.insert(c, glyph.getCursor().getSelectB(),glyph.getCursor().getSelectE());
 			}
 
 		}
@@ -190,13 +185,14 @@ public class Window extends JPanel implements Observer, MouseListener {
 		}
 
 	}
-
+	// Place le curseur lorsque l'on clique
 	public void mouseClicked(MouseEvent e) {
 		System.out.println("Point x" + e.getX() + "Point y" + e.getY());
 		controller.locateGlyph(new Point(e.getX(), e.getY()));
 
 	}
 
+	// Place le curseur lorsque le clique gauche est pressé
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 		controller.locateGlyph(new Point(e.getX(), e.getY()));
@@ -204,20 +200,16 @@ public class Window extends JPanel implements Observer, MouseListener {
 		this.glyph.getCursor().setSelectEnd(controller.getGlyphIndex2());
 	}
 
+
+	// Place le curseur lorsque le clique gauche est lâché
 	public void mouseReleased(MouseEvent e) {
 		controller.locateGlyph(new Point(e.getX(), e.getY()));
 		this.glyph.getCursor().setSelectEnd(controller.getGlyphIndex2());
 		update();
 	}
 
-	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+	public void mouseEntered(MouseEvent e) {}
 
-	}
-
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-
-	}
+	public void mouseExited(MouseEvent e) {}
 
 }
