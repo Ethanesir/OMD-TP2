@@ -32,7 +32,6 @@ public class PasteCommand implements Command {
 		for(int i=0;i<this.copie.size();i++){
 			this.document.add(copie.get(i),deleteIndex+i);
 		}
-		this.use=true;
 
 	}
 
