@@ -33,6 +33,7 @@ public class PasteCommand implements Command {
 			this.document.add(copie.get(i),deleteIndex+i);
 		}
 
+
 	}
 
 
