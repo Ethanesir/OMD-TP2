@@ -8,13 +8,5 @@ public interface Command {
 	public void execute();
 
 
-	/*
-	* Méthode permettant le retour en arrière
-	*/
-	public void undo();
 
-	/*
-	* Méthode précisant si la commande est réversible ou pas
-	*/
-	public boolean isReversible();
 }

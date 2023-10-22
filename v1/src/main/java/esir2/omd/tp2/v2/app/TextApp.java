@@ -1,6 +1,5 @@
 package esir2.omd.tp2.v2.app;
 
-import esir2.omd.tp2.v2.patterns.commands.CommandsInvoker;
 import esir2.omd.tp2.v2.patterns.commands.CopyCommand;
 import esir2.omd.tp2.v2.patterns.commands.PasteCommand;
 import esir2.omd.tp2.v2.patterns.commands.CutCommand;
@@ -15,7 +14,6 @@ import java.util.*;
 public class TextApp implements AppInterface {
 	private Window view;
 	private Glyph document;
-	private CommandsInvoker cmdInvoker;
 	private List <Glyph> presseP;
 
 	// Constructeur de la classe
@@ -23,24 +21,9 @@ public class TextApp implements AppInterface {
 		this.document = g;
 		view = new Window(g, this);
 		view.createView();
-		cmdInvoker = new CommandsInvoker();
 		presseP= new ArrayList<Glyph>();
 	}
 
-	/*
-	* Méthode permettant de revenir en arrière, annuler la dernière action de la pile
-	*/
-	public void undo() {
-		cmdInvoker.undo();
-	}
-
-	/*
-	* Méthode permettant de rejouer la dernière action annulée 
-	*/
-	public void redo() {
-		cmdInvoker.redo();
-
-	}
 
 	/*
 	* Supprime et met dans le presse papier la sélection
@@ -48,12 +31,11 @@ public class TextApp implements AppInterface {
 	* @param  indexEnd fin de la sélection
 	*/
 	public void cut(int indexBegin, int indexEnd) {
-		// TODO Auto-generated method stub
 		if (indexBegin!=indexEnd){
 			System.out.println("test2");
 			CutCommand copyCommand = new CutCommand(this.document, indexBegin, indexEnd);
 			this.presseP=copyCommand.getPresseP();
-			cmdInvoker.execute(copyCommand);
+			copyCommand.execute();
 
 		}
 	}
@@ -69,10 +51,9 @@ public class TextApp implements AppInterface {
 			System.out.println("test2");
 			CopyCommand copyCommand = new CopyCommand(this.document, indexBegin, indexEnd);
 			this.presseP=copyCommand.getPresseP();
-			cmdInvoker.execute(copyCommand);
+			copyCommand.execute();
 
 		}
-		System.out.println("test3");
 	}
 
 
@@ -84,7 +65,7 @@ public class TextApp implements AppInterface {
 	public void paste(int indexBegin, int indexEnd) {
 		if (!this.presseP.isEmpty()){
 			PasteCommand pasteCommand = new PasteCommand(this.document, indexBegin, indexEnd,this.presseP);
-			cmdInvoker.execute(pasteCommand);
+			pasteCommand.execute();
 		}
 
 	}
@@ -99,7 +80,7 @@ public class TextApp implements AppInterface {
 	public void insert(Glyph glyph, int indexBegin, int indexEnd) {
 		System.out.println("Controller" + indexBegin);
 		InsertCommand insertCmd = new InsertCommand(this.document, glyph,indexBegin,indexEnd);
-		cmdInvoker.execute(insertCmd);
+		insertCmd.execute();
 
 	}
 
@@ -133,7 +114,7 @@ public class TextApp implements AppInterface {
 	*/
 	public void delete(int indexBegin, int indexEnd) {
 		DeleteCommand deleteCmd = new DeleteCommand(this.document,  indexBegin,  indexEnd);
-		cmdInvoker.execute(deleteCmd);
+		deleteCmd.execute();
 	}
 
 }

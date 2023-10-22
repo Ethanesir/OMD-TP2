@@ -6,16 +6,6 @@ import esir2.omd.tp2.v2.patterns.composite.Point;
 public interface AppInterface {
 
 	/*
-	* Méthode permettant de revenir en arrière, annuler la dernière action de la pile
-	*/
-	public void undo();
-
-	/*
-	* Méthode permettant de rejouer la dernière action annulée 
-	*/
-	public void redo();
-
-	/*
 	* Supprime et met dans le presse papier la sélection
 	* @param  indexBegin  début de la sélection
 	* @param  indexEnd fin de la sélection

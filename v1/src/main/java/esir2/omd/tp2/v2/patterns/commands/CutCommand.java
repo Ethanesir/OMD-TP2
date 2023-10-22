@@ -43,31 +43,5 @@ public class CutCommand implements Command {
 		return this.copie;
 	}
 
-	/*
-	* Méthode permettant le retour en arrière
-	*/
-	public void undo() {
-		System.out.println("AAAAAAAA");
-		if (insertB==insertE){
-			this.insertB = this.insertB - 1;
-
-		if (insertB >= 0) {
-			this.document.add(copie.get(0), insertB);
-		}
-		}
-		else {			
-			for(int i=0;i<this.copie.size();i++){
-				this.document.add(copie.get(i), insertB+i);
-			}
-	
-		}
-	}
-
-	/*
-	* Méthode précisant si la commande est réversible ou pas
-	*/
-	public boolean isReversible() {
-		return true;
-	}
 
 }

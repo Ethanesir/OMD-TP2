@@ -38,18 +38,6 @@ public class CopyCommand implements Command {
 		return this.copie;
 	}
 
-	/*
-	* Méthode permettant le retour en arrière
-	*/
-	public void undo() {
 
-	}
-
-	/*
-	* Méthode précisant si la commande est réversible ou pas
-	*/
-	public boolean isReversible() {
-		return false;
-	}
 
 }
