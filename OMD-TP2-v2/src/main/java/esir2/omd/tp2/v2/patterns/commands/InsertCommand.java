@@ -32,6 +32,7 @@ public class InsertCommand implements Command {
 	*/
 	public void execute() {
 		System.out.println("Command " + insertB);
+		this.document.getCursor().setGlyphIndex(this.insertE);
 		for(int i=insertB;i<insertE;i++){
 			if(!this.use){
 				this.save.add( this.document.getChild(insertB));
