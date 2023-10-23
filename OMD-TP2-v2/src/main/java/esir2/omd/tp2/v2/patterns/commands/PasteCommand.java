@@ -30,6 +30,7 @@ public class PasteCommand implements Command {
 	*/
 	public void execute() {
 		int deleteIndex=indexB;
+		this.document.getCursor().setGlyphIndex(this.indexE);
 		for(int i=indexB;i<indexE;i++){
 			if(!this.use){
 				this.save.add( this.document.getChild(deleteIndex));
