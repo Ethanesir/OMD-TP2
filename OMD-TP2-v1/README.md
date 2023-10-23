@@ -11,7 +11,7 @@ Il offre des fonctionnalités telles que la sélection, la coupe, la copie, le c
 - Coller (Ctrl+V) : Collez le texte du presse-papiers à l'emplacement du curseur.
 
 ### 💡 Aperçu
-![preview img](/preview.png)
+![preview img](./preview.png)
 
 # 🎗️ Comment Utiliser l'Application
 - Pour Sélection de Texte :
