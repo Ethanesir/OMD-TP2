@@ -28,7 +28,7 @@ public class DeleteCommand implements Command {
 			}
 		}
 		else {
-
+			this.document.getCursor().setGlyphIndex(this.indexE);
 			for(int i=0;i<(this.indexE-this.indexB);i++){
 				this.document.remove(indexB);
 			}
