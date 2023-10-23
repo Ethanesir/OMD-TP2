@@ -27,7 +27,6 @@ public class DeleteCommand implements Command {
 	*/
 	public void execute() {
 		if (indexB==indexE){
-			System.out.println("OOOOOUUUUU");
 			this.deleteIndex = this.indexB - 1;
 
 			if (deleteIndex >= 0) {
@@ -38,8 +37,7 @@ public class DeleteCommand implements Command {
 			}
 		}
 		else {
-
-			System.out.println("AUIIIHDHDHDHDH");
+			this.document.getCursor().setGlyphIndex(this.indexE);
 			for(int i=0;i<(this.indexE-this.indexB);i++){
 				if(!this.use){
 					this.save.add( this.document.getChild(deleteIndex));
