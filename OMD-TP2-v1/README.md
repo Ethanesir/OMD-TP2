@@ -1,5 +1,5 @@
-## v2
-Mini-Éditeur de Texte v2
+## v1
+## Mini-Éditeur de Texte v1
 Description du Projet
 Le mini-éditeur de texte est une application simple qui permet aux utilisateurs d'éditer du texte de manière basique. Il offre des fonctionnalités telles que la sélection, la coupe, la copie, le collage, ainsi que les fonctionnalités Annuler (Ctrl+Z) et Rétablir (Ctrl+Y).
 
