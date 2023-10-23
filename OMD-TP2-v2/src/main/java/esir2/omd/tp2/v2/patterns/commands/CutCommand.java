@@ -27,6 +27,7 @@ public class CutCommand implements Command {
 	*/
 	public void execute() {
 		System.out.println("Command Cut");
+		this.document.getCursor().setGlyphIndex(this.insertE);
 		for(int i=this.insertB;i<this.insertE;i++){
 			if(!use){
 			copie.add(this.document.getComponents().get(insertB));
